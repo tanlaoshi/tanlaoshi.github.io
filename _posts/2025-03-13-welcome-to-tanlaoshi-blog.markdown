@@ -1,7 +1,9 @@
 ---
 layout: single
-title:  "欢迎来到谭老师的博客！"
+title:  "谭老师力荐！那些好用的软件们···"
 date:   2025-03-13 20:12:08 +0800
 categories: update
 ---
-这玩意怪复杂的，我还没搞明白。
+
+第一节课我们介绍了谷歌浏览器/Google Chrome。\
+[下载地址](https://www.google.cn/intl/zh-CN/chrome/)
