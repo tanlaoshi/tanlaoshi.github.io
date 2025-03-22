@@ -1,8 +1,12 @@
 ---
 layout: single
-title:  "谭老师力荐！那些好用的软件们···"
+title:  "欢迎来到谭老师的博客，我是个很能折腾的人···"
 date:   2025-03-13 20:12:08 +0800
 categories: 
 ---
 
-第一节课我们介绍了[谷歌浏览器/Google Chrome](https://www.google.cn/intl/zh-CN/chrome/)。
+上大学的时候我就喜欢折腾，在电脑上安装各种操作系统，Windows的各个版本从XP一直到Vista。毕业之后又陆续安装Windows 7、Windows 8/8.1、Windows 10、Windows 11等等。还装过Ubuntu、Manjaro、OpenSUSE等各个Linux发行版，着实花了不少功夫。
+
+现在谭老师有很多开发需求，眼下的Windows 10用了好几年了，安装了各种各样的软件，这里那里下载了不少文件。我又懒得整理，所以每隔一段时间，也许半年也许两年，我就会格盘重装一次。这样做其实代价挺大的，之前弄好的环境需要重新搭建，好些软件也得重新安装。
+
+
