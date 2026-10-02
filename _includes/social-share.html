@@ -1,0 +1,109 @@
+{% assign share_url = page.url | absolute_url %}
+{% assign share_title = page.title | default: site.title %}
+
+<section class="page__share">
+  <h4 class="page__share-title">{{ site.data.ui-text[site.locale].share_on_label | default: "分享到" }}</h4>
+
+  <a href="https://service.weibo.com/share/share.php?url={{ share_url | url_encode }}&title={{ share_title | url_encode }}"
+     class="btn btn--weibo"
+     onclick="window.open(this.href, 'weibo-share', 'left=20,top=20,width=600,height=500,toolbar=1,resizable=1'); return false;"
+     title="分享到微博"
+     aria-label="分享到微博">
+    <i class="fab fa-fw fa-weibo" aria-hidden="true"></i><span> 微博</span>
+  </a>
+
+  <a href="https://connect.qq.com/widget/shareqq/index.html?url={{ share_url | url_encode }}&title={{ share_title | url_encode }}&summary={{ page.excerpt | default: site.description | strip_html | truncate: 100 | url_encode }}"
+     class="btn btn--qq"
+     onclick="window.open(this.href, 'qq-share', 'left=20,top=20,width=600,height=500,toolbar=1,resizable=1'); return false;"
+     title="分享到 QQ"
+     aria-label="分享到 QQ">
+    <i class="fab fa-fw fa-qq" aria-hidden="true"></i><span> QQ</span>
+  </a>
+
+  <button type="button"
+          class="btn btn--wechat"
+          id="share-wechat-btn"
+          title="微信扫码后分享到朋友圈"
+          aria-label="微信分享"
+          data-share-url="{{ share_url }}">
+    <i class="fab fa-fw fa-weixin" aria-hidden="true"></i><span> 微信</span>
+  </button>
+
+  <button type="button"
+          class="btn btn--copy"
+          id="share-copy-btn"
+          title="复制链接，可粘贴到小红书 / 朋友圈"
+          aria-label="复制链接"
+          data-share-url="{{ share_url }}">
+    <i class="fas fa-fw fa-link" aria-hidden="true"></i><span> 复制链接</span>
+  </button>
+</section>
+
+<div id="share-wechat-modal" class="share-wechat-modal" hidden>
+  <div class="share-wechat-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="share-wechat-title">
+    <button type="button" class="share-wechat-modal__close" id="share-wechat-close" aria-label="关闭">&times;</button>
+    <h5 id="share-wechat-title">微信分享</h5>
+    <p>用微信扫码打开后，点右上角 ··· 分享到朋友圈或好友。</p>
+    <img id="share-wechat-qr"
+         class="share-wechat-modal__qr"
+         alt="本页二维码"
+         width="180"
+         height="180"
+         loading="lazy">
+    <p class="share-wechat-modal__tip">小红书不支持网页一键分享，请用「复制链接」后到 App 粘贴。</p>
+  </div>
+</div>
+
+<script>
+(function () {
+  var modal = document.getElementById('share-wechat-modal');
+  var qr = document.getElementById('share-wechat-qr');
+  var wechatBtn = document.getElementById('share-wechat-btn');
+  var closeBtn = document.getElementById('share-wechat-close');
+  var copyBtn = document.getElementById('share-copy-btn');
+
+  function openWechat() {
+    var url = wechatBtn.getAttribute('data-share-url');
+    qr.src = 'https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=' + encodeURIComponent(url);
+    modal.hidden = false;
+  }
+
+  function closeWechat() {
+    modal.hidden = true;
+  }
+
+  if (wechatBtn) wechatBtn.addEventListener('click', openWechat);
+  if (closeBtn) closeBtn.addEventListener('click', closeWechat);
+  if (modal) {
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeWechat();
+    });
+  }
+
+  if (copyBtn) {
+    copyBtn.addEventListener('click', async function () {
+      var url = copyBtn.getAttribute('data-share-url');
+      var label = copyBtn.querySelector('span');
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          await navigator.clipboard.writeText(url);
+        } else {
+          var ta = document.createElement('textarea');
+          ta.value = url;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+        }
+        if (label) {
+          var old = label.textContent;
+          label.textContent = ' 已复制';
+          setTimeout(function () { label.textContent = old; }, 1600);
+        }
+      } catch (err) {
+        window.prompt('复制下面的链接：', url);
+      }
+    });
+  }
+})();
+</script>

@@ -1,10 +1,12 @@
 ---
-layout: single
+layout: home
 author_profile: false
 title: ToyOS
-permalink: /
+entries_layout: list
+classes: wide
 ---
 
+{% capture toyos_intro %}
 ToyOS 是一套面向教学与实验的操作系统，包含裸机内核 **ToyKernel**、UEFI 引导 **ToyBoot**，以及镜像与启动脚本 **ToyImage**。
 
 加电后的路径大致是：
@@ -26,6 +28,10 @@ OVMF（UEFI）→ ToyBoot（BOOTX64.EFI）→ ToyKernel → 桌面 / Shell / 用
 
 想动手理解操作系统如何启动、如何管内存与进程、如何写驱动和应用的同学；也适合当作课设或自学实验平台。
 
+谭老师 · [哔哩哔哩](https://space.bilibili.com/41036636)
+
 ---
 
-谭老师 · [哔哩哔哩](https://space.bilibili.com/41036636)
+## 博客
+{% endcapture %}
+{{ toyos_intro | markdownify }}

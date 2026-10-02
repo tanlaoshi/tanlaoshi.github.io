@@ -1,0 +1,61 @@
+<style>
+/* 国内平台分享按钮与微信二维码弹层 */
+.btn--weibo { background-color: #e6162d !important; }
+.btn--qq { background-color: #12b7f5 !important; }
+.btn--wechat { background-color: #07c160 !important; color: #fff !important; border: 0; cursor: pointer; }
+.btn--copy { background-color: #6c757d !important; color: #fff !important; border: 0; cursor: pointer; }
+.btn--weibo:hover, .btn--qq:hover, .btn--wechat:hover, .btn--copy:hover { filter: brightness(1.05); }
+
+.share-wechat-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.55);
+}
+.share-wechat-modal[hidden] { display: none !important; }
+.share-wechat-modal__dialog {
+  position: relative;
+  max-width: 22rem;
+  width: 100%;
+  padding: 1.25rem 1.25rem 1rem;
+  border-radius: 0.5rem;
+  background: #fff;
+  color: #222;
+  text-align: center;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+}
+.share-wechat-modal__dialog h5 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+}
+.share-wechat-modal__dialog p {
+  margin: 0.4rem 0;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+.share-wechat-modal__qr {
+  display: block;
+  margin: 0.75rem auto;
+  border-radius: 0.25rem;
+  background: #f5f5f5;
+}
+.share-wechat-modal__tip {
+  color: #666;
+  font-size: 0.8rem !important;
+}
+.share-wechat-modal__close {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.55rem;
+  border: 0;
+  background: transparent;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  color: #666;
+}
+</style>
