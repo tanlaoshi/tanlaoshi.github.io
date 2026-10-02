@@ -10,11 +10,11 @@ minimal_mistakes_skin    : "dark" # "air", "aqua", "contrast", "dark", "dirt", "
 # Site Settings
 locale                   : "zh-CN" #"en-US"
 rtl                      : # true, false (default) # turns direction of the page into right to left for RTL languages
-title                    : "谭老师"
+title                    : "ToyOS"
 title_separator          : "-"
-subtitle                 : "学着做博客" # site tagline that appears below site title in masthead
+subtitle                 : "教学与实验用操作系统" # site tagline that appears below site title in masthead
 name                     : "谭玉刚"
-description              : "老牛逼了"
+description              : "ToyOS — 面向教学与实验的操作系统（ToyKernel / ToyBoot / ToyImage）"
 domain                   : "www.tanyugang.com"
 url                      : "https://www.tanlaoshi.com"
 # url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
@@ -185,6 +185,7 @@ exclude:
   - Rakefile
   - README
   - tmp
+  - Documents # local symlink to ToyOS docs, not published
   - /docs # ignore Minimal Mistakes /docs
   - /test # ignore Minimal Mistakes /test
 keep_files:

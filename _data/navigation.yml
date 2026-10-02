@@ -1,12 +1,6 @@
 # main links
 main:
-  - title: "哔哩哔哩谭玉刚"
+  - title: "首页"
+    url: /
+  - title: "哔哩哔哩"
     url: https://space.bilibili.com/41036636
-  # - title: "About"
-  #   url: https://mmistakes.github.io/minimal-mistakes/about/
-  # - title: "Sample Posts"
-  #   url: /year-archive/
-  # - title: "Sample Collections"
-  #   url: /collection-archive/
-  # - title: "Sitemap"
-  #   url: /sitemap/
