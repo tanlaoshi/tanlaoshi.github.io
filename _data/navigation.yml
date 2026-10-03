@@ -2,7 +2,15 @@
 main:
   - title: "首页"
     url: /
+  - title: "架构"
+    url: /architecture/
+  - title: "驱动"
+    url: /drivers/
+  - title: "构建"
+    url: /build/
+  - title: "课堂"
+    url: /classroom/
+  - title: "关于"
+    url: /about/
   - title: "博客"
-    url: /posts/
-  - title: "哔哩哔哩"
-    url: https://space.bilibili.com/41036636
+    url: /blog/

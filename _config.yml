@@ -12,9 +12,9 @@ locale                   : "zh-CN" #"en-US"
 rtl                      : # true, false (default) # turns direction of the page into right to left for RTL languages
 title                    : "ToyOS"
 title_separator          : "-"
-subtitle                 : "教学与实验用操作系统" # site tagline that appears below site title in masthead
+subtitle                 : "从 UEFI 到桌面的完整系统栈" # site tagline that appears below site title in masthead
 name                     : "谭玉刚"
-description              : "ToyOS — 面向教学与实验的操作系统（ToyKernel / ToyBoot / ToyImage）"
+description              : "ToyOS：从 UEFI 到桌面的完整系统栈，全部源码可读可改"
 domain                   : "www.tanyugang.com"
 url                      : "https://www.tanlaoshi.com"
 # url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
@@ -133,27 +133,12 @@ author:
       icon: "fab fa-fw fa-instagram"
       # url: "https://instagram.com/"
 
-# Site Footer
+# Site Footer（哔哩哔哩在 _includes/footer.html 里接在 Feed 右侧）
 footer:
   links:
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      # url:
-    - label: "Facebook"
-      icon: "fab fa-fw fa-facebook-square"
-      # url:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url:
-    - label: "GitLab"
-      icon: "fab fa-fw fa-gitlab"
-      # url:
-    - label: "Bitbucket"
-      icon: "fab fa-fw fa-bitbucket"
-      # url:
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      # url:
+      url: "https://github.com/tanlaoshi/ToyKernel"
 
 
 # Reading Files
@@ -186,6 +171,7 @@ exclude:
   - README
   - tmp
   - Documents # local symlink to ToyOS docs, not published
+  - docs # PR 拆分等站务文档，不发布
   - /docs # ignore Minimal Mistakes /docs
   - /test # ignore Minimal Mistakes /test
 keep_files:
@@ -226,9 +212,9 @@ permalink: /:categories/:title/
 timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 
-# Pagination with jekyll-paginate
-paginate: 5 # amount of posts to show
-paginate_path: /page:num/
+# Pagination with jekyll-paginate（博客列表用主题 home layout，暂不启分页）
+# paginate: 5
+# paginate_path: /page:num/
 
 # Pagination with jekyll-paginate-v2
 # See https://github.com/sverrirs/jekyll-paginate-v2/blob/master/README-GENERATOR.md#site-configuration
