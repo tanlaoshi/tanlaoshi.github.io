@@ -1,0 +1,39 @@
+{% comment %}
+Single alternate-language button. Pass: include.locale, include.ref
+{% endcomment %}
+{% assign cur_locale = include.locale | default: site.locale %}
+{% assign cur_ref = include.ref | default: '' %}
+{% assign zh_url = '/' | relative_url %}
+{% assign en_url = '/en/' | relative_url %}
+
+{% if cur_ref != '' %}
+  {% for p in site.pages %}
+    {% if p.ref == cur_ref %}
+      {% if p.locale == 'en' %}
+        {% assign en_url = p.url | relative_url %}
+      {% else %}
+        {% assign zh_url = p.url | relative_url %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+  {% for p in site.posts %}
+    {% if p.ref == cur_ref %}
+      {% if p.locale == 'en' %}
+        {% assign en_url = p.url | relative_url %}
+      {% else %}
+        {% assign zh_url = p.url | relative_url %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% assign is_en = false %}
+{% if cur_locale == 'en' or cur_locale == 'en-US' or cur_locale == 'en-GB' %}
+  {% assign is_en = true %}
+{% endif %}
+
+{% if is_en %}
+  <a class="masthead__lang-btn" href="{{ zh_url }}" hreflang="zh-CN" title="中文">中文</a>
+{% else %}
+  <a class="masthead__lang-btn" href="{{ en_url }}" hreflang="en" title="English">EN</a>
+{% endif %}

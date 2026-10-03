@@ -13,8 +13,10 @@ rtl                      : # true, false (default) # turns direction of the page
 title                    : "ToyOS"
 title_separator          : "-"
 subtitle                 : "从 UEFI 到桌面的完整系统栈" # site tagline that appears below site title in masthead
+subtitle_en              : "UEFI to desktop"
 name                     : "谭玉刚"
 description              : "ToyOS：从 UEFI 到桌面的完整系统栈，全部源码可读可改"
+description_en           : "ToyOS: a full system stack from UEFI to the desktop — all source readable and changeable"
 domain                   : "www.tanyugang.com"
 url                      : "https://www.tanlaoshi.com"
 # url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
@@ -294,7 +296,20 @@ compress_html:
 
 # Defaults
 defaults:
-  # _posts
+  # Chinese pages (root)
+  - scope:
+      path: ""
+      type: pages
+    values:
+      locale: zh-CN
+  # English pages under en/
+  - scope:
+      path: "en"
+      type: pages
+    values:
+      locale: en
+      author_profile: false
+  # _posts (override locale/ref per file for English)
   - scope:
       path: ""
       type: posts
@@ -304,4 +319,5 @@ defaults:
       read_time: true
       comments: # true
       share: true
-      related: true
+      related: false
+      locale: zh-CN

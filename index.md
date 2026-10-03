@@ -4,6 +4,8 @@ author_profile: false
 title: 首页
 permalink: /
 classes: wide
+locale: zh-CN
+ref: home
 ---
 
 ToyOS：从 UEFI 到桌面的完整系统栈，全部源码可读可改。

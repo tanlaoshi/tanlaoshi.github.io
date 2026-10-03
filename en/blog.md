@@ -1,9 +1,9 @@
 ---
 layout: lang-blog
-title: 博客
-permalink: /blog/
+title: Blog
+permalink: /en/blog/
 author_profile: false
 classes: wide
-locale: zh-CN
+locale: en
 ref: blog
 ---

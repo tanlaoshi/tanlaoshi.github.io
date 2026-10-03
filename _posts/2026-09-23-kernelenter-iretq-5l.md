@@ -5,6 +5,9 @@ date: 2026-09-23 20:00:00 +0800
 categories:
 author_profile: true
 share: true
+locale: zh-CN
+ref: kernelenter-iretq
+excerpt: "我想让内核任务也能在 IF=1 下跑：把 KernelEnter 从「跳进去」改成 iretq 恢复上下文。NUC 上却反复出现拖窗不跟手、store remove 卡死，甚至 #UD / #PF，严重时整机 Reset。目标很清楚，路却走得很难看。"
 ---
 
 ## 现象

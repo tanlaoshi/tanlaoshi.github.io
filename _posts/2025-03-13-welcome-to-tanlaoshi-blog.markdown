@@ -2,7 +2,10 @@
 layout: single
 title:  "欢迎来到谭老师的博客，我是个很能折腾的人···"
 date:   2025-03-13 20:12:08 +0800
-categories: 
+categories:
+locale: zh-CN
+ref: welcome
+excerpt: "上大学的时候我就喜欢折腾，在电脑上安装各种操作系统，Windows的各个版本从XP一直到Vista。毕业之后又陆续安装Windows 7、Windows 8/8.1、Windows 10、Windows 11等等。"
 ---
 
 上大学的时候我就喜欢折腾，在电脑上安装各种操作系统，Windows的各个版本从XP一直到Vista。毕业之后又陆续安装Windows 7、Windows 8/8.1、Windows 10、Windows 11等等。还装过Ubuntu、Manjaro、OpenSUSE等各个Linux发行版，着实花了不少功夫。

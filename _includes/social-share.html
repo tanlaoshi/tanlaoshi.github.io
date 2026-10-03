@@ -1,56 +1,93 @@
 {% assign share_url = page.url | absolute_url %}
 {% assign share_title = page.title | default: site.title %}
+{% assign share_locale = page.locale | default: site.locale %}
+{% assign is_en_share = false %}
+{% if share_locale == 'en' or share_locale == 'en-US' or share_locale == 'en-GB' %}
+  {% assign is_en_share = true %}
+{% endif %}
+{% if is_en_share %}
+  {% assign lbl_weibo = "Weibo" %}
+  {% assign lbl_qq = "QQ" %}
+  {% assign lbl_wechat = "WeChat" %}
+  {% assign lbl_copy = "Copy link" %}
+  {% assign lbl_copied = " Copied" %}
+  {% assign title_weibo = "Share on Weibo" %}
+  {% assign title_qq = "Share on QQ" %}
+  {% assign title_wechat = "Scan with WeChat, then share to Moments" %}
+  {% assign title_copy = "Copy link for Xiaohongshu / Moments" %}
+  {% assign wechat_h = "WeChat share" %}
+  {% assign wechat_p = "Scan with WeChat, then tap ··· to share to Moments or a friend." %}
+  {% assign wechat_tip = "Xiaohongshu has no one-click web share — use Copy link and paste in the app." %}
+  {% assign wechat_close = "Close" %}
+  {% assign qr_alt = "Page QR code" %}
+{% else %}
+  {% assign lbl_weibo = "微博" %}
+  {% assign lbl_qq = "QQ" %}
+  {% assign lbl_wechat = "微信" %}
+  {% assign lbl_copy = "复制链接" %}
+  {% assign lbl_copied = " 已复制" %}
+  {% assign title_weibo = "分享到微博" %}
+  {% assign title_qq = "分享到 QQ" %}
+  {% assign title_wechat = "微信扫码后分享到朋友圈" %}
+  {% assign title_copy = "复制链接，可粘贴到小红书 / 朋友圈" %}
+  {% assign wechat_h = "微信分享" %}
+  {% assign wechat_p = "用微信扫码打开后，点右上角 ··· 分享到朋友圈或好友。" %}
+  {% assign wechat_tip = "小红书不支持网页一键分享，请用「复制链接」后到 App 粘贴。" %}
+  {% assign wechat_close = "关闭" %}
+  {% assign qr_alt = "本页二维码" %}
+{% endif %}
 
 <section class="page__share">
-  <h4 class="page__share-title">{{ site.data.ui-text[site.locale].share_on_label | default: "分享到" }}</h4>
+  <h4 class="page__share-title">{{ site.data.ui-text[share_locale].share_on_label | default: "Share on" }}</h4>
 
   <a href="https://service.weibo.com/share/share.php?url={{ share_url | url_encode }}&title={{ share_title | url_encode }}"
      class="btn btn--weibo"
      onclick="window.open(this.href, 'weibo-share', 'left=20,top=20,width=600,height=500,toolbar=1,resizable=1'); return false;"
-     title="分享到微博"
-     aria-label="分享到微博">
-    <i class="fab fa-fw fa-weibo" aria-hidden="true"></i><span> 微博</span>
+     title="{{ title_weibo }}"
+     aria-label="{{ title_weibo }}">
+    <i class="fab fa-fw fa-weibo" aria-hidden="true"></i><span> {{ lbl_weibo }}</span>
   </a>
 
   <a href="https://connect.qq.com/widget/shareqq/index.html?url={{ share_url | url_encode }}&title={{ share_title | url_encode }}&summary={{ page.excerpt | default: site.description | strip_html | truncate: 100 | url_encode }}"
      class="btn btn--qq"
      onclick="window.open(this.href, 'qq-share', 'left=20,top=20,width=600,height=500,toolbar=1,resizable=1'); return false;"
-     title="分享到 QQ"
-     aria-label="分享到 QQ">
-    <i class="fab fa-fw fa-qq" aria-hidden="true"></i><span> QQ</span>
+     title="{{ title_qq }}"
+     aria-label="{{ title_qq }}">
+    <i class="fab fa-fw fa-qq" aria-hidden="true"></i><span> {{ lbl_qq }}</span>
   </a>
 
   <button type="button"
           class="btn btn--wechat"
           id="share-wechat-btn"
-          title="微信扫码后分享到朋友圈"
-          aria-label="微信分享"
+          title="{{ title_wechat }}"
+          aria-label="{{ title_wechat }}"
           data-share-url="{{ share_url }}">
-    <i class="fab fa-fw fa-weixin" aria-hidden="true"></i><span> 微信</span>
+    <i class="fab fa-fw fa-weixin" aria-hidden="true"></i><span> {{ lbl_wechat }}</span>
   </button>
 
   <button type="button"
           class="btn btn--copy"
           id="share-copy-btn"
-          title="复制链接，可粘贴到小红书 / 朋友圈"
-          aria-label="复制链接"
-          data-share-url="{{ share_url }}">
-    <i class="fas fa-fw fa-link" aria-hidden="true"></i><span> 复制链接</span>
+          title="{{ title_copy }}"
+          aria-label="{{ title_copy }}"
+          data-share-url="{{ share_url }}"
+          data-copied-label="{{ lbl_copied }}">
+    <i class="fas fa-fw fa-link" aria-hidden="true"></i><span> {{ lbl_copy }}</span>
   </button>
 </section>
 
 <div id="share-wechat-modal" class="share-wechat-modal" hidden>
   <div class="share-wechat-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="share-wechat-title">
-    <button type="button" class="share-wechat-modal__close" id="share-wechat-close" aria-label="关闭">&times;</button>
-    <h5 id="share-wechat-title">微信分享</h5>
-    <p>用微信扫码打开后，点右上角 ··· 分享到朋友圈或好友。</p>
+    <button type="button" class="share-wechat-modal__close" id="share-wechat-close" aria-label="{{ wechat_close }}">&times;</button>
+    <h5 id="share-wechat-title">{{ wechat_h }}</h5>
+    <p>{{ wechat_p }}</p>
     <img id="share-wechat-qr"
          class="share-wechat-modal__qr"
-         alt="本页二维码"
+         alt="{{ qr_alt }}"
          width="180"
          height="180"
          loading="lazy">
-    <p class="share-wechat-modal__tip">小红书不支持网页一键分享，请用「复制链接」后到 App 粘贴。</p>
+    <p class="share-wechat-modal__tip">{{ wechat_tip }}</p>
   </div>
 </div>
 
@@ -83,6 +120,7 @@
   if (copyBtn) {
     copyBtn.addEventListener('click', async function () {
       var url = copyBtn.getAttribute('data-share-url');
+      var copied = copyBtn.getAttribute('data-copied-label') || ' Copied';
       var label = copyBtn.querySelector('span');
       try {
         if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -97,11 +135,11 @@
         }
         if (label) {
           var old = label.textContent;
-          label.textContent = ' 已复制';
+          label.textContent = copied;
           setTimeout(function () { label.textContent = old; }, 1600);
         }
       } catch (err) {
-        window.prompt('复制下面的链接：', url);
+        window.prompt(url);
       }
     });
   }

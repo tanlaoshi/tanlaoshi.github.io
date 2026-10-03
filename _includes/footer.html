@@ -21,7 +21,11 @@
       <li><a href="{% if site.atom_feed.path %}{{ site.atom_feed.path }}{% else %}{{ '/feed.xml' | relative_url }}{% endif %}"><i class="fas fa-fw fa-square-rss" aria-hidden="true"></i> {{ site.data.ui-text[locale].feed_label | default: "Feed" }}</a></li>
     {% endunless %}
 
-    <li><a href="https://space.bilibili.com/41036636" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-bilibili" aria-hidden="true"></i> 哔哩哔哩</a></li>
+    {% assign bilibili_label = "哔哩哔哩" %}
+    {% if locale == 'en' or locale == 'en-US' or locale == 'en-GB' %}
+      {% assign bilibili_label = "Bilibili" %}
+    {% endif %}
+    <li><a href="https://space.bilibili.com/41036636" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-bilibili" aria-hidden="true"></i> {{ bilibili_label }}</a></li>
   </ul>
 </div>
 {% endif %}

@@ -3,7 +3,10 @@ layout: single
 title: 驱动
 permalink: /drivers/
 author_profile: false
+classes: wide
 toc: true
+locale: zh-CN
+ref: drivers
 ---
 
 真机路径已经能摸到存储、输入、有线/无线网和显示。课上用的不是“示意驱动”，而是 Probe 得着、Bind 得上的那一套。

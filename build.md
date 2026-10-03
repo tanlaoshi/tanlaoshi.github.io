@@ -3,7 +3,10 @@ layout: single
 title: 构建
 permalink: /build/
 author_profile: false
+classes: wide
 toc: true
+locale: zh-CN
+ref: build
 ---
 
 最短路径是 QEMU：镜像仓里一条脚本拉起 UEFI → Boot → Kernel → 桌面。

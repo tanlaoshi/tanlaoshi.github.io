@@ -58,4 +58,88 @@
   cursor: pointer;
   color: #666;
 }
+
+/* 主栏 / 顶栏宽度：两侧留白再大一些 */
+#main,
+.masthead__inner-wrap {
+  max-width: 100% !important;
+  padding-inline: 1.5rem;
+}
+@media (min-width: 64em) {
+  #main,
+  .masthead__inner-wrap {
+    max-width: min(75rem, calc(100% - 8rem)) !important; /* ~1200px */
+    padding-inline: 3rem;
+  }
+}
+@media (min-width: 90em) {
+  #main,
+  .masthead__inner-wrap {
+    max-width: min(78rem, calc(100% - 12rem)) !important; /* ~1248px */
+    padding-inline: 4rem;
+  }
+}
+
+/* 无作者侧栏 / wide：吃掉主题为侧栏预留的左右空白 */
+.layout--single #main:not(:has(> .sidebar)) > .page,
+.layout--single.wide #main > .page,
+.wide .page,
+.wide .page__related {
+  float: none !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  padding-right: 0 !important;
+  padding-inline-end: 0 !important;
+}
+
+/* 导航：桌面宽度下尽量显示全部标签，不塞进汉堡菜单 */
+@media (min-width: 64em) {
+  .greedy-nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+  .greedy-nav .site-title {
+    flex: 0 1 auto;
+    min-width: 0;
+  }
+  .greedy-nav .site-subtitle {
+    display: none; /* 副标题占宽，桌面隐藏以腾出导航空间 */
+  }
+  .greedy-nav .visible-links {
+    display: flex !important;
+    flex: 1 1 auto;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+    overflow: visible;
+  }
+  .greedy-nav .visible-links li {
+    display: flex !important;
+    visibility: visible !important;
+  }
+  .greedy-nav .visible-links a {
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+  }
+  .greedy-nav .greedy-nav__toggle,
+  .greedy-nav .hidden-links {
+    display: none !important;
+  }
+}
+
+/* 右上角单一语言切换按钮 */
+.masthead__lang-btn {
+  flex: 0 0 auto;
+  margin-left: 0.5rem;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 0.25rem;
+  white-space: nowrap;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-decoration: none !important;
+}
+.masthead__lang-btn:hover {
+  border-color: rgba(255, 255, 255, 0.7);
+}
 </style>

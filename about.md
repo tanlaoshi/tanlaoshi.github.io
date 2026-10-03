@@ -3,7 +3,10 @@ layout: single
 title: 关于
 permalink: /about/
 author_profile: false
+classes: wide
 toc: true
+locale: zh-CN
+ref: about
 ---
 
 做 ToyOS，是因为教学需要一套**从头到尾都读得动、改得动**的系统：从 UEFI 启动，到桌面和用户 ELF，中间层边界清楚，课上能指着代码讲，而不是只对着黑盒演示。

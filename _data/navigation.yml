@@ -1,4 +1,4 @@
-# main links
+# main links (Chinese)
 main:
   - title: "首页"
     url: /
@@ -14,3 +14,20 @@ main:
     url: /about/
   - title: "博客"
     url: /blog/
+
+# English
+main_en:
+  - title: "Home"
+    url: /en/
+  - title: "Architecture"
+    url: /en/architecture/
+  - title: "Drivers"
+    url: /en/drivers/
+  - title: "Build"
+    url: /en/build/
+  - title: "Classroom"
+    url: /en/classroom/
+  - title: "About"
+    url: /en/about/
+  - title: "Blog"
+    url: /en/blog/

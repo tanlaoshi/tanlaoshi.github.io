@@ -3,7 +3,10 @@ layout: single
 title: 架构
 permalink: /architecture/
 author_profile: false
+classes: wide
 toc: true
+locale: zh-CN
+ref: architecture
 ---
 
 ToyOS 按层切开：用户态只经 syscall 进核；Services 搭在 Core / Library / Font / HAL 上；HAL 收拢本架构驱动；Boot 只负责填好 `BOOT_INFO` 再交棒。

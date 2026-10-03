@@ -1,0 +1,51 @@
+{% comment %}
+Lang-filtered post list. include.locale = zh-CN | en
+{% endcomment %}
+{% assign list_locale = include.locale | default: page.locale | default: site.locale %}
+{% assign is_en = false %}
+{% if list_locale == 'en' or list_locale == 'en-US' or list_locale == 'en-GB' %}
+  {% assign is_en = true %}
+{% endif %}
+
+{% assign entries = '' | split: '' %}
+{% for post in site.posts %}
+  {% assign post_en = false %}
+  {% if post.locale == 'en' or post.locale == 'en-US' or post.locale == 'en-GB' %}
+    {% assign post_en = true %}
+  {% endif %}
+  {% if is_en %}
+    {% if post_en %}
+      {% assign entries = entries | push: post %}
+    {% endif %}
+  {% else %}
+    {% unless post_en %}
+      {% assign entries = entries | push: post %}
+    {% endunless %}
+  {% endif %}
+{% endfor %}
+
+<div class="entries-list">
+{% for post in entries %}
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    <h2 class="archive__item-title no_toc p-name" itemprop="headline">
+      <a class="u-url" href="{{ post.url | relative_url }}" rel="permalink">{{ post.title }}</a>
+    </h2>
+    {% if post.read_time %}
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i>
+        {% assign words_per_minute = post.words_per_minute | default: site.words_per_minute | default: 200 %}
+        {% assign words = post.content | strip_html | number_of_words %}
+        {% assign read_mins = words | divided_by: words_per_minute %}
+        {% if read_mins < 1 %}{% assign read_mins = 1 %}{% endif %}
+        {% if is_en %}
+          {{ read_mins }} min read
+        {% else %}
+          {% if read_mins < 1 %}少于 1 分钟阅读{% else %}{{ read_mins }} 分钟阅读{% endif %}
+        {% endif %}
+      </p>
+    {% endif %}
+    {% if post.excerpt %}
+      <p class="archive__item-excerpt p-summary" itemprop="description">{{ post.excerpt | strip_html | truncate: 200 }}</p>
+    {% endif %}
+  </article>
+{% endfor %}
+</div>

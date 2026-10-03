@@ -3,7 +3,10 @@ layout: single
 title: 课堂
 permalink: /classroom/
 author_profile: false
+classes: wide
 toc: true
+locale: zh-CN
+ref: classroom
 ---
 
 这门课教的是**从固件到应用**的一整条栈：UEFI 怎么把机器交到内核，内核怎么管内存与进程，驱动怎么挂上，用户程序怎么经 syscall 碰到真实设备。不是只背概念，而是在可读可改的源码上动手。
